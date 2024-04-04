@@ -52,7 +52,7 @@ stage('Deploy to Tomcat') {
                     def credentialsId = 'tomcat_deploy_credentials'
                     def contextPath = '/myapp' // Adjust as needed
 
-                    def warFile = sh(script: 'ls target/*.jar', returnStdout: true).trim()
+                    def warFile = sh(script: 'ls spring-boot-app/target/*.jar', returnStdout: true).trim()
                     def deployCmd = "curl -u war-deployer:jenkins-tomcat-deploy -T ${warFile} ${tomcatUrl}/manager/text/deploy?path=${contextPath}"
 
                     sh deployCmd
