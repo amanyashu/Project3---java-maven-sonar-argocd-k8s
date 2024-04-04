@@ -13,7 +13,7 @@ pipeline {
         sh 'ls -ltr'
         // build the project and create a JAR file
         sh 'cd spring-boot-app && mvn clean package'
-        sh 'cd target && java -jar spring-boot-web.jar'
+        sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
       }
     }
     stage('Static Code Analysis') {
