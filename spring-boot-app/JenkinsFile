@@ -13,8 +13,8 @@ pipeline {
         sh 'ls -ltr'
         // build the project and create a JAR file
         sh 'cd spring-boot-app && mvn clean package'
-        sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
-        sh 'echo $! > pid.txt'
+        //sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
+       // sh 'echo $! > pid.txt'
       }
     }
     stage('Static Code Analysis') {
@@ -30,8 +30,9 @@ pipeline {
    
     stage('Stop') {
       steps {
-        
-        sh 'curl -X POST http://localhost:9999/actuator/shutdown'
+        sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
+        sh 'echo $! > pid.txt'
+        sh 'curl -X POST http://52.167.200.192:9999/actuator/shutdown'
         sh 'rm pid.txt'
       }
   }
