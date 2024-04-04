@@ -30,7 +30,8 @@ pipeline {
    
     stage('Stop') {
       steps {
-        sh 'kill $(cat pid.txt)'
+        
+        sh 'curl -X POST http://localhost:9999/actuator/shutdown'
         sh 'rm pid.txt'
       }
   }
