@@ -28,14 +28,28 @@ pipeline {
       }
     }
    
-    stage('Stop') {
-      steps {
-        sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
-        sh 'echo $! > pid.txt'
-        sh 'curl -X POST http://52.167.200.192:9999/actuator/shutdown'
-        sh 'rm pid.txt'
-      }
-  }
+    //stage('Stop') {
+     // steps {
+       // sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
+        //sh 'echo $! > pid.txt'
+        //sh 'curl -X POST http://52.167.200.192:9999/actuator/shutdown'
+        //sh 'rm pid.txt'
+      //}
+  //}
+stage ('Deploy') {
+    
+    steps {
+        echo "deploy stage"
+        deploy adapters: [tomcat9(
+            credentialsId: 'tomcat_deploy_credentials',
+            path: '',
+            url: 'http://52.167.200.192:8088/'
+        )],
+        contextPath: 'test',
+        onFailure: 'false',
+        war: '**/*.jar'
+    }
+}
     //stage('Build and Push Docker Image') {
       //environment {
       // DOCKER_IMAGE = "40.84.44.161/spring-boot-app:${BUILD_NUMBER}"
