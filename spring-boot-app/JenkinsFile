@@ -29,7 +29,7 @@ pipeline {
         }
       }
     }
-    stage('Build and Push Docker Image') {
+    //stage('Build and Push Docker Image') {
       //environment {
       // DOCKER_IMAGE = "40.84.44.161/spring-boot-app:${BUILD_NUMBER}"
         // DOCKERFILE_LOCATION = "spring-boot-app/Dockerfile"
@@ -44,7 +44,7 @@ pipeline {
       //      }
       //  }
       //}
-    }
+    //}
    
     }
   }
