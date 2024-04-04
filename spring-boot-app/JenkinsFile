@@ -14,6 +14,7 @@ pipeline {
         // build the project and create a JAR file
         sh 'cd spring-boot-app && mvn clean package'
         sh 'cd spring-boot-app && java -jar target/spring-boot-web.jar'
+        sh 'echo $! > pid.txt'
       }
     }
     stage('Static Code Analysis') {
@@ -26,6 +27,13 @@ pipeline {
         }
       }
     }
+   
+    stage('Stop') {
+      steps {
+        sh 'kill $(cat pid.txt)'
+        sh 'rm pid.txt'
+      }
+  }
     //stage('Build and Push Docker Image') {
       //environment {
       // DOCKER_IMAGE = "40.84.44.161/spring-boot-app:${BUILD_NUMBER}"
