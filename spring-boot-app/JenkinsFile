@@ -51,11 +51,11 @@ stage('Deploy to Tomcat') {
                     def tomcatUrl = 'http://52.167.200.192:8088'
                     def credentialsId = 'tomcat_deploy_credentials'
                     def contextPath = '/myapp' // Adjust as needed
+                    sh 'cp target/spring-boot-app.war /var/lib/tomcat/webapps/'
+                    //def warFile = sh(script: 'ls spring-boot-app/target/*.jar', returnStdout: true).trim()
+                    //def deployCmd = "curl -u war-deployer:jenkins-tomcat-deploy -T ${warFile} ${tomcatUrl}/manager/text/deploy?path=${contextPath}"
 
-                    def warFile = sh(script: 'ls spring-boot-app/target/*.jar', returnStdout: true).trim()
-                    def deployCmd = "curl -u war-deployer:jenkins-tomcat-deploy -T ${warFile} ${tomcatUrl}/manager/text/deploy?path=${contextPath}"
-
-                    sh deployCmd
+                    //sh deployCmd
                 }
             }
 }
