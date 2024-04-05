@@ -49,22 +49,18 @@
     </dependencies>
 
     <build>
-        <plugins>
-            <!-- Plugin for creating a WAR file -->
-            <plugin>
-                <groupId>org.springframework.boot</groupId>
-                <artifactId>spring-boot-maven-plugin</artifactId>
-                <executions>
-                    <execution>
-                        <goals>
-                            <goal>repackage</goal>
-                        </goals>
-                    </execution>
-                </executions>
-                <configuration>
-                    <packaging>war</packaging>
-                </configuration>
-            </plugin>
-        </plugins>
-    </build>
+    <plugins>
+        <!-- Plugin for creating a WAR file -->
+        <plugin>
+            <groupId>org.apache.maven.plugins</groupId>
+            <artifactId>maven-war-plugin</artifactId>
+            <version>3.2.2</version>
+            <configuration>
+                <!-- Optionally configure WAR filename -->
+                <warName>spring-boot-demo</warName>
+            </configuration>
+        </plugin>
+    </plugins>
+</build>
+
 </project>
