@@ -48,19 +48,21 @@
         </dependency>
     </dependencies>
 
-    <build>
-    <plugins>
-        <!-- Plugin for creating a WAR file -->
-        <plugin>
-            <groupId>org.apache.maven.plugins</groupId>
-            <artifactId>maven-war-plugin</artifactId>
-            <version>3.2.2</version>
-            <configuration>
-                <!-- Optionally configure WAR filename -->
-                <warName>spring-boot-demo</warName>
-            </configuration>
-        </plugin>
-    </plugins>
-</build>
+    <packaging>war</packaging>
 
-</project>
+    <build>
+        <plugins>
+            <!-- Plugin for creating a WAR file -->
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.2.2</version>
+                <configuration>
+                    <!-- Optionally configure WAR filename -->
+                    <warName>spring-boot-demo</warName>
+                    <!-- Set the webapp directory -->
+                    <webappDirectory>${project.basedir}/src/main/webapp</webappDirectory>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
