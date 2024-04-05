@@ -25,7 +25,7 @@
     </properties>
 
     <dependencies>
-
+        <!-- Your dependencies -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
@@ -40,36 +40,31 @@
             <scope>test</scope>
         </dependency>
 
-        <!-- debugging -->
+        <!-- Debugging -->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-devtools</artifactId>
             <optional>true</optional>
         </dependency>
-
     </dependencies>
 
     <build>
-
-        <finalName>spring-boot-web</finalName>
-
         <plugins>
+            <!-- Plugin for creating a WAR file -->
             <plugin>
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
-            </plugin>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>3.8.0</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>repackage</goal>
+                        </goals>
+                    </execution>
+                </executions>
                 <configuration>
-                    <source>${java.version}</source>
-                    <target>${java.version}</target>
+                    <packaging>war</packaging>
                 </configuration>
             </plugin>
-
         </plugins>
     </build>
-
-
 </project>
