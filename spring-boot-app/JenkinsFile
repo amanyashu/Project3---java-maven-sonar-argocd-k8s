@@ -44,7 +44,7 @@ pipeline {
     //    sh "curl -X POST -u manager:manager_password http://52.167.200.192:8088/manager/text/deploy?path=/test&war=file:./target/*.jar"
   //  }
 //}
-stage ('Deploy') {
+//stage ('Deploy') {
 
         //steps {
       //      echo "deploy stage"
