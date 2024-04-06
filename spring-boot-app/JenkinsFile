@@ -46,19 +46,19 @@ pipeline {
 //}
 stage ('Deploy') {
 
-        steps {
-            echo "deploy stage"
+        //steps {
+      //      echo "deploy stage"
             //sh "curl -X POST -u manager:manager_password http://52.167.200.192:8088/manager/text/deploy?path=/test&war=:**/*.war"
-            deploy adapters: [tomcat9 (
-                    credentialsId: 'tomcat_deploy_credentials',
-                    path: '',
-                    url: 'http://http://40.112.138.47:8088/'
-                )],
-                contextPath: 'test',
-                onFailure: 'false',
-                war: '**/*.war'
-        }
-    }
+            //deploy adapters: [tomcat9 (
+              //      credentialsId: 'tomcat_deploy_credentials',
+                //    path: '',
+                  //  url: 'http://http://40.112.138.47:8088/'
+                //)],
+                //contextPath: 'test',
+                //onFailure: 'false',
+                //war: '**/*.war'
+        //}
+    //}
 
 //stage('Deploy to Tomcat') {
   //          steps {
